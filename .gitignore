@@ -95,3 +95,5 @@ dev-app-update.yml
 
 # DynamoDB Local files
 .dynamodb/ 
+# Electron-vite build output
+out/
