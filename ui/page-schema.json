@@ -1,0 +1,301 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "图片文字叠加应用程序",
+  "type": "object",
+  "properties": {
+    "application": {
+      "type": "object",
+      "properties": {
+        "name": "Text Overlay Application",
+        "description": "桌面应用程序，用于在图片上添加文字叠加层",
+        "layout": {
+          "type": "object",
+          "properties": {
+            "dimensions": {
+              "type": "object",
+              "properties": {
+                "maxWidth": "1200px",
+                "height": "720px",
+                "splitRatio": "4:6 (40% 左侧, 60% 右侧)"
+              }
+            },
+            "positioning": "水平垂直居中",
+            "scrolling": "仅文字图层选择区域可滚动，其他区域固定"
+          }
+        },
+        "structure": {
+          "type": "object",
+          "properties": {
+            "topToolbar": {
+              "type": "object",
+              "component": "TopToolbar",
+              "properties": {
+                "height": "固定高度",
+                "buttons": [
+                  {
+                    "name": "导出",
+                    "action": "导出当前设计为PNG图片"
+                  },
+                  {
+                    "name": "历史记录",
+                    "action": "打开历史记录弹窗"
+                  },
+                  {
+                    "name": "保存",
+                    "action": "保存当前项目到本地存储"
+                  }
+                ]
+              }
+            },
+            "mainContent": {
+              "type": "object",
+              "properties": {
+                "layout": "水平分割",
+                "leftPanel": {
+                  "type": "object",
+                  "component": "CanvasArea",
+                  "width": "40%",
+                  "properties": {
+                    "canvasRenderer": {
+                      "type": "object",
+                      "component": "CanvasRenderer",
+                      "properties": {
+                        "dimensions": "300×533像素",
+                        "displaySize": "280×497像素",
+                        "backgroundImage": "模版背景图片",
+                        "textLayers": "文字图层数组",
+                        "interactions": [
+                          "点击选择文字图层",
+                          "显示选中图层的边框"
+                        ]
+                      }
+                    },
+                    "pixelDisplay": {
+                      "type": "object",
+                      "properties": {
+                        "text": "300 × 533 像素",
+                        "position": "画布上方"
+                      }
+                    },
+                    "undoRedoControls": {
+                      "type": "object",
+                      "properties": {
+                        "undoButton": {
+                          "icon": "Undo2",
+                          "state": "可用时深色，不可用时浅灰色"
+                        },
+                        "redoButton": {
+                          "icon": "Redo2",
+                          "state": "可用时深色，不可用时浅灰色"
+                        },
+                        "position": "画布下方居中"
+                      }
+                    }
+                  }
+                },
+                "rightPanel": {
+                  "type": "object",
+                  "width": "60%",
+                  "properties": {
+                    "templateSelector": {
+                      "type": "object",
+                      "component": "TemplateSelector",
+                      "properties": {
+                        "dropdown": "模版选择下拉菜单",
+                        "layerThumbnails": "水平滚动的文字图层缩略图",
+                        "height": "固定高度"
+                      }
+                    },
+                    "textEditPanel": {
+                      "type": "object",
+                      "component": "TextEditPanel",
+                      "properties": {
+                        "height": "440px",
+                        "content": {
+                          "type": "object",
+                          "properties": {
+                            "placeholder": {
+                              "text": "请选择一个文字进行编辑",
+                              "alignment": "垂直居中"
+                            },
+                            "editingControls": {
+                              "type": "object",
+                              "properties": {
+                                "textInput": "文字内容输入框",
+                                "fontSizeSlider": "字体大小滑块",
+                                "fontFamilySelect": "字体选择下拉菜单",
+                                "fontWeightSelect": "字体粗细选择",
+                                "colorPicker": "预设颜色选择器",
+                                "positionInputs": "X和Y位置输入框"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "components": {
+          "type": "object",
+          "properties": {
+            "TopToolbar": {
+              "type": "object",
+              "file": "/components/TopToolbar.tsx",
+              "props": {
+                "onExport": "导出功能回调",
+                "onHistoryOpen": "打开历史记录回调",
+                "onSave": "保存项目回调",
+                "isExporting": "导出状态标识"
+              }
+            },
+            "CanvasRenderer": {
+              "type": "object",
+              "file": "/components/CanvasRenderer.tsx",
+              "props": {
+                "backgroundImage": "背景图片URL",
+                "textLayers": "文字图层数组",
+                "selectedLayerId": "选中图层ID",
+                "onLayerSelect": "图层选择回调",
+                "onCanvasReady": "画布准备就绪回调",
+                "width": "画布宽度",
+                "height": "画布高度"
+              }
+            },
+            "TemplateSelector": {
+              "type": "object",
+              "file": "/components/TemplateSelector.tsx",
+              "props": {
+                "templates": "模版数组",
+                "selectedTemplateId": "选中模版ID",
+                "onTemplateSelect": "模版选择回调",
+                "textLayers": "文字图层数组",
+                "selectedLayerId": "选中图层ID",
+                "onLayerSelect": "图层选择回调"
+              }
+            },
+            "TextEditPanel": {
+              "type": "object",
+              "file": "/components/TextEditPanel.tsx",
+              "props": {
+                "selectedLayer": "选中的文字图层",
+                "onLayerUpdate": "图层更新回调"
+              }
+            },
+            "HistoryModal": {
+              "type": "object",
+              "file": "/components/HistoryModal.tsx",
+              "props": {
+                "isOpen": "弹窗开启状态",
+                "onClose": "关闭弹窗回调",
+                "history": "历史记录数组",
+                "onReload": "重新加载回调",
+                "onDelete": "删除历史记录回调"
+              }
+            }
+          }
+        },
+        "dataStructures": {
+          "type": "object",
+          "properties": {
+            "TextLayer": {
+              "type": "object",
+              "properties": {
+                "id": "string - 图层唯一标识",
+                "text": "string - 文字内容",
+                "x": "number - X坐标",
+                "y": "number - Y坐标",
+                "fontSize": "number - 字体大小",
+                "fontFamily": "string - 字体系列",
+                "color": "string - 文字颜色",
+                "fontWeight": "string - 字体粗细",
+                "isSelected": "boolean - 是否可见"
+              }
+            },
+            "Template": {
+              "type": "object",
+              "properties": {
+                "id": "string - 模版唯一标识",
+                "name": "string - 模版名称",
+                "backgroundImage": "string - 背景图片URL",
+                "textLayers": "TextLayer[] - 预定义文字图层数组"
+              }
+            },
+            "HistoryItem": {
+              "type": "object",
+              "properties": {
+                "id": "string - 历史记录唯一标识",
+                "thumbnail": "string - 缩略图Data URL",
+                "timestamp": "string - 时间戳",
+                "text": "string - 文字内容摘要",
+                "templateName": "string - 模版名称"
+              }
+            }
+          }
+        },
+        "features": {
+          "type": "object",
+          "properties": {
+            "templateManagement": {
+              "description": "模版管理功能",
+              "features": [
+                "预定义模版选择",
+                "模版切换",
+                "每个模版包含预设文字图层"
+              ]
+            },
+            "textEditing": {
+              "description": "文字编辑功能",
+              "features": [
+                "选择现有文字图层",
+                "修改文字内容",
+                "调整字体大小",
+                "更改字体系列",
+                "设置字体粗细",
+                "选择预设颜色",
+                "调整文字位置"
+              ]
+            },
+            "canvasInteraction": {
+              "description": "画布交互功能",
+              "features": [
+                "点击选择文字图层",
+                "显示选中状态",
+                "实时预览文字效果"
+              ]
+            },
+            "historyManagement": {
+              "description": "历史记录管理",
+              "features": [
+                "撤销操作",
+                "重做操作",
+                "导出历史记录",
+                "历史记录弹窗查看"
+              ]
+            },
+            "exportAndSave": {
+              "description": "导出和保存功能",
+              "features": [
+                "导出为PNG图片",
+                "保存项目到本地存储",
+                "历史记录保存"
+              ]
+            }
+          }
+        },
+        "styling": {
+          "type": "object",
+          "properties": {
+            "colorScheme": "黑色/灰色主题",
+            "typography": "系统默认字体设置",
+            "spacing": "紧凑而高效的间距",
+            "interactions": "悬停和选中状态的视觉反馈"
+          }
+        }
+      }
+    }
+  }
+}

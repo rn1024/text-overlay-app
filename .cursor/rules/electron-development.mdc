@@ -1,0 +1,49 @@
+# Electron 开发规范
+
+## 安全规范
+1. **进程隔离**: 主进程和渲染进程必须严格分离
+2. **禁用 Node 集成**: 渲染进程中 `nodeIntegration: false`
+3. **启用上下文隔离**: `contextIsolation: true`
+4. **预加载脚本**: 所有主进程API必须通过预加载脚本暴露
+
+## IPC 通信规范
+1. 使用 `ipcMain.handle` 和 `ipcRenderer.invoke` 进行异步通信
+2. 所有IPC通道名称使用 kebab-case 格式
+3. 在 [src/preload/preload.ts](mdc:src/preload/preload.ts) 中定义安全的API桥接
+4. 在 [src/shared/types.ts](mdc:src/shared/types.ts) 中定义IPC相关的类型
+
+## 主进程开发规范
+- 文件位置: `src/main/`
+- 窗口管理统一在 [src/main/main.ts](mdc:src/main/main.ts) 中处理
+- 使用 electron-store 进行配置存储
+- 错误处理必须完善，避免主进程崩溃
+
+## 渲染进程开发规范
+- 文件位置: `src/renderer/`
+- 不能直接访问 Node.js API
+- 通过 `window.electronAPI` 访问主进程功能
+- 使用 React + Ant Design 构建UI
+
+## 构建和打包
+- 开发环境: `pnpm run dev`
+- 构建: `pnpm run build`
+- 打包: `pnpm run package`
+- 支持 Windows、macOS、Linux 三平台打包
+
+## 示例：安全的API暴露
+```typescript
+// src/preload/preload.ts
+contextBridge.exposeInMainWorld('electronAPI', {
+  getConfig: (key: string) => ipcRenderer.invoke('get-config', key),
+  saveFile: (content: string) => ipcRenderer.invoke('dialog:saveFile', content),
+});
+
+// src/main/main.ts
+ipcMain.handle('get-config', (event, key: string) => {
+  return store.get(key);
+});
+```
+description:
+globs:
+alwaysApply: false
+---

@@ -1,0 +1,46 @@
+# TypeScript 编码规范
+
+## 类型定义规范
+1. 所有函数都必须有明确的类型注解
+2. 避免使用 `any` 类型，优先使用具体类型或 `unknown`
+3. 接口命名使用 PascalCase，以 `I` 开头（如 `IUserData`）
+4. 类型别名使用 PascalCase（如 `UserType`）
+
+## 组件规范
+1. React组件必须使用 `React.FC` 或函数声明 + 类型注解
+2. Props接口命名规则：`ComponentNameProps`
+3. 状态接口命名规则：`ComponentNameState`
+
+## 导入导出规范
+1. 优先使用命名导出而非默认导出
+2. 类型导入使用 `import type { ... }`
+3. 按照以下顺序组织导入：
+   - React相关
+   - 第三方库
+   - 本地组件
+   - 类型定义
+   - 样式文件
+
+## 示例
+```typescript
+import React from 'react';
+import { Button, Space } from 'antd';
+import type { ButtonProps } from 'antd';
+import { useAppStore } from '../hooks/useAppStore';
+import type { AppState } from '../../shared/types';
+
+interface MainContentProps {
+  title: string;
+  onAction: (action: string) => void;
+}
+
+const MainContent: React.FC<MainContentProps> = ({ title, onAction }) => {
+  // 组件实现
+};
+
+export default MainContent;
+```
+description:
+globs:
+alwaysApply: false
+---

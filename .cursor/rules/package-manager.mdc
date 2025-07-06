@@ -1,0 +1,26 @@
+# 包管理器规范
+
+## 使用 pnpm 作为包管理器
+本项目强制使用 pnpm 作为包管理器，不允许使用 npm 或 yarn。
+
+### 常用命令
+- 安装依赖: `pnpm install`
+- 添加依赖: `pnpm add <package>`
+- 添加开发依赖: `pnpm add -D <package>`
+- 删除依赖: `pnpm remove <package>`
+- 运行脚本: `pnpm run <script>`
+
+### 开发命令
+- 启动开发: `pnpm run dev`
+- 构建项目: `pnpm run build`
+- 打包应用: `pnpm run package`
+
+### 规范要求
+1. 提交代码前必须运行 `pnpm install` 确保依赖同步
+2. 不要提交 `node_modules` 目录
+3. 必须提交 `pnpm-lock.yaml` 文件
+4. 新增依赖时需要说明用途和版本选择理由
+description:
+globs:
+alwaysApply: false
+---
