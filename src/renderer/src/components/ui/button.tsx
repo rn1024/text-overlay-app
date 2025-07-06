@@ -5,16 +5,16 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "./utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "bg-gray-900 text-white hover:bg-gray-800",
-        destructive: "bg-red-600 text-white hover:bg-red-700",
-        outline: "border border-gray-300 bg-white text-gray-900 hover:bg-gray-50",
-        secondary: "bg-gray-100 text-gray-900 hover:bg-gray-200",
-        ghost: "text-gray-900 hover:bg-gray-100",
-        link: "text-gray-900 underline-offset-4 hover:underline",
+        default: "bg-[#111827] text-[#ffffff] hover:bg-[#374151] focus:ring-[#6b7280]",
+        destructive: "bg-[#ef4444] text-[#ffffff] hover:bg-[#dc2626] focus:ring-[#ef4444]",
+        outline: "border border-[#d1d5db] bg-[#ffffff] text-[#374151] hover:bg-[#f9fafb] hover:border-[#9ca3af] focus:ring-[#6b7280]",
+        secondary: "bg-[#f3f4f6] text-[#111827] hover:bg-[#e5e7eb] focus:ring-[#6b7280]",
+        ghost: "text-[#111827] hover:bg-[#f3f4f6] focus:ring-[#6b7280]",
+        link: "text-[#111827] underline-offset-4 hover:underline focus:ring-[#6b7280]",
       },
       size: {
         default: "h-9 px-4 py-2",

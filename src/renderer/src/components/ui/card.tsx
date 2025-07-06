@@ -10,7 +10,7 @@ function Card({
     <div
       data-slot="card"
       className={cn(
-        "bg-card text-card-foreground flex flex-col gap-1 rounded-xl border",
+        "bg-[#ffffff] text-[#111827] flex flex-col gap-1 rounded-xl border border-[#e5e7eb] shadow-[0_0_0_1px_rgba(0,0,0,0.05)]",
         className,
       )}
       {...props}
@@ -41,7 +41,7 @@ function CardTitle({
   return (
     <h4
       data-slot="card-title"
-      className={cn("leading-none", className)}
+      className={cn("leading-none text-[#111827] font-medium", className)}
       {...props}
     />
   );
@@ -54,7 +54,7 @@ function CardDescription({
   return (
     <p
       data-slot="card-description"
-      className={cn("text-muted-foreground", className)}
+      className={cn("text-[#6b7280]", className)}
       {...props}
     />
   );

@@ -11,13 +11,10 @@ let mainWindow: BrowserWindow;
 function createWindow(): void {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 1200,
-    height: 800,
-    minWidth: 1200,
-    minHeight: 800,
-    maxWidth: 1200,
-    maxHeight: 800,
-    resizable: false,
+    width: 880,
+    height: 680,
+    minWidth: 800,
+    minHeight: 600,
     show: false,
     frame: false,
     autoHideMenuBar: true,
@@ -31,6 +28,11 @@ function createWindow(): void {
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show();
+    
+    // 如果是开发环境，在窗口显示后打开DevTools
+    if (is.dev) {
+      mainWindow.webContents.openDevTools({ mode: 'detach' });
+    }
   });
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
@@ -41,7 +43,6 @@ function createWindow(): void {
   // Load the remote URL for development or the local html file for production.
   if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
     mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL']);
-    mainWindow.webContents.openDevTools();
   } else {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'));
   }
@@ -162,4 +163,9 @@ ipcMain.handle('window:minimize', () => {
   if (mainWindow) {
     mainWindow.minimize();
   }
+});
+
+// 添加退出应用的IPC处理
+ipcMain.handle('app:quit', () => {
+  app.quit();
 }); 

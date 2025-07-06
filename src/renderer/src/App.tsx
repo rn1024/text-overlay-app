@@ -404,97 +404,95 @@ function App() {
   }, [redoStack, textLayers]);
 
   return (
-    <div className="h-screen bg-gray-100 flex items-center justify-center p-2 overflow-hidden">
-      <div className="w-full max-w-5xl bg-white rounded-lg shadow-lg overflow-hidden h-full max-h-[720px] flex flex-col">
-        {/* 顶部工具栏 */}
-        <TopToolbar
-          onExport={handleExport}
-          onHistoryOpen={() => setIsHistoryOpen(true)}
-          onSave={handleSave}
-          isExporting={isExporting}
-        />
+    <div className="h-screen bg-white flex flex-col overflow-hidden">
+      {/* 顶部工具栏 */}
+      <TopToolbar
+        onExport={handleExport}
+        onHistoryOpen={() => setIsHistoryOpen(true)}
+        onSave={handleSave}
+        isExporting={isExporting}
+      />
 
-        {/* 主要内容区域 - 4:6比例 */}
-        <div className="flex flex-1 min-h-0">
-          {/* 左侧画布预览区 - 40% */}
-          <div className="w-2/5 bg-gray-50 border-r border-gray-200">
-            <div className="h-full flex flex-col justify-center">
-              <div className="text-center">
-                <div className="mb-1">
-                  <p className="text-xs text-gray-500">300 × 533 像素</p>
-                </div>
-                <div className="px-2 mb-6">
-                  <CanvasRenderer
-                    backgroundImage={selectedTemplate.backgroundImage}
-                    textLayers={textLayers}
-                    selectedLayerId={selectedLayerId}
-                    onLayerSelect={handleLayerSelect}
-                    onCanvasReady={handleCanvasReady}
-                    width={280}
-                    height={497}
-                  />
-                </div>
-                {/* 撤销/重做控件 */}
-                <div className="flex justify-center items-center gap-4 px-4 mt-2">
-                  <button
-                    onClick={handleUndo}
-                    disabled={undoStack.length === 0}
-                    className="p-1 hover:bg-gray-100 disabled:cursor-not-allowed transition-colors"
-                    title="撤销"
-                  >
-                    <Undo2 className={`w-4 h-4 ${undoStack.length === 0 ? 'text-gray-300' : 'text-gray-900'}`} />
-                  </button>
-                  <button
-                    onClick={handleRedo}
-                    disabled={redoStack.length === 0}
-                    className="p-1 hover:bg-gray-100 disabled:cursor-not-allowed transition-colors"
-                    title="重做"
-                  >
-                    <Redo2 className={`w-4 h-4 ${redoStack.length === 0 ? 'text-gray-300' : 'text-gray-900'}`} />
-                  </button>
-                </div>
+      {/* 主要内容区域 - 4:6比例 */}
+      <div className="flex flex-1 min-h-0">
+        {/* 左侧画布预览区 - 40% */}
+        <div className="w-2/5 bg-[#f3f4f6] border-r border-[#e5e7eb]">
+          <div className="h-full flex flex-col justify-center">
+            <div className="text-center">
+              <div className="mb-1">
+                <p className="text-xs text-[#6b7280]">300 × 533 像素</p>
               </div>
-            </div>
-          </div>
-
-          {/* 右侧编辑面板 - 60% */}
-          <div className="w-3/5 bg-white flex flex-col min-h-0">
-            <div className="px-3 pt-3 pb-2 flex flex-col h-full">
-              {/* 模版选择 - 固定高度 */}
-              <div className="mb-2">
-                <TemplateSelector
-                  templates={templates}
-                  selectedTemplateId={selectedTemplateId}
-                  onTemplateSelect={handleTemplateSelect}
+              <div className="px-2 mb-6">
+                <CanvasRenderer
+                  backgroundImage={selectedTemplate.backgroundImage}
                   textLayers={textLayers}
                   selectedLayerId={selectedLayerId}
                   onLayerSelect={handleLayerSelect}
+                  onCanvasReady={handleCanvasReady}
+                  width={280}
+                  height={497}
                 />
               </div>
-
-              {/* 文字编辑 - 占据剩余空间 */}
-              <div className="flex-1 min-h-0">
-                <TextEditPanel
-                  selectedLayer={selectedLayer}
-                  onLayerUpdate={handleLayerUpdate}
-                />
+              {/* 撤销/重做控件 */}
+              <div className="flex justify-center items-center gap-4 px-4 mt-2">
+                <button
+                  onClick={handleUndo}
+                  disabled={undoStack.length === 0}
+                  className="p-1 hover:bg-[#e5e7eb] disabled:cursor-not-allowed transition-colors"
+                  title="撤销"
+                >
+                  <Undo2 className={`w-4 h-4 ${undoStack.length === 0 ? 'text-[#d1d5db]' : 'text-[#111827]'}`} />
+                </button>
+                <button
+                  onClick={handleRedo}
+                  disabled={redoStack.length === 0}
+                  className="p-1 hover:bg-[#e5e7eb] disabled:cursor-not-allowed transition-colors"
+                  title="重做"
+                >
+                  <Redo2 className={`w-4 h-4 ${redoStack.length === 0 ? 'text-[#d1d5db]' : 'text-[#111827]'}`} />
+                </button>
               </div>
             </div>
           </div>
         </div>
 
-        {/* 历史记录弹窗 */}
-        <HistoryModal
-          isOpen={isHistoryOpen}
-          onClose={() => setIsHistoryOpen(false)}
-          history={history}
-          onReload={handleHistoryReload}
-          onDelete={handleHistoryDelete}
-        />
-        
-        {/* Toast通知 */}
-        <Toaster position="top-right" />
+        {/* 右侧编辑面板 - 60% */}
+        <div className="w-3/5 bg-[#ffffff] flex flex-col min-h-0">
+          <div className="px-3 pt-3 pb-2 flex flex-col h-full">
+            {/* 模版选择 - 固定高度 */}
+            <div className="mb-2">
+              <TemplateSelector
+                templates={templates}
+                selectedTemplateId={selectedTemplateId}
+                onTemplateSelect={handleTemplateSelect}
+                textLayers={textLayers}
+                selectedLayerId={selectedLayerId}
+                onLayerSelect={handleLayerSelect}
+              />
+            </div>
+
+            {/* 文字编辑 - 占据剩余空间 */}
+            <div className="flex-1 min-h-0">
+              <TextEditPanel
+                selectedLayer={selectedLayer}
+                onLayerUpdate={handleLayerUpdate}
+              />
+            </div>
+          </div>
+        </div>
       </div>
+
+      {/* 历史记录弹窗 */}
+      <HistoryModal
+        isOpen={isHistoryOpen}
+        onClose={() => setIsHistoryOpen(false)}
+        history={history}
+        onReload={handleHistoryReload}
+        onDelete={handleHistoryDelete}
+      />
+      
+      {/* Toast通知 */}
+      <Toaster position="top-right" />
     </div>
   );
 }

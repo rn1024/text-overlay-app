@@ -9,6 +9,7 @@ const api = {
   
   // App APIs
   getAppVersion: () => ipcRenderer.invoke('get-app-version'),
+  quitApp: () => ipcRenderer.invoke('app:quit'),
   
   // Dialog APIs
   openFile: () => ipcRenderer.invoke('dialog:openFile'),

@@ -51,7 +51,7 @@ export const TextEditPanel: React.FC<TextEditPanelProps> = ({
         <CardHeader className="pb-1 px-4 pt-4 flex-shrink-0">
           <CardTitle className="text-sm">文字编辑</CardTitle>
         </CardHeader>
-        <CardContent className="flex-1 flex items-center justify-center text-gray-500 text-sm px-4 pb-4">
+        <CardContent className="flex-1 flex items-center justify-center text-[#6b7280] text-sm px-4 pb-4">
           请选择一个文字进行编辑
         </CardContent>
       </Card>
@@ -67,7 +67,7 @@ export const TextEditPanel: React.FC<TextEditPanelProps> = ({
         <div className="space-y-3 h-full">
           {/* 文字内容 - 全宽 */}
           <div className="space-y-2">
-            <Label className="text-xs font-medium text-gray-700">文字内容</Label>
+            <Label className="text-xs font-medium text-[#374151]">文字内容</Label>
             <Textarea
               value={selectedLayer.text}
               onChange={(e) => onLayerUpdate(selectedLayer.id, { text: e.target.value })}
@@ -78,15 +78,15 @@ export const TextEditPanel: React.FC<TextEditPanelProps> = ({
 
           {/* 颜色选择 - 全宽 */}
           <div className="space-y-2">
-            <Label className="text-xs font-medium text-gray-700">颜色</Label>
+            <Label className="text-xs font-medium text-[#374151]">颜色</Label>
             <div className="flex flex-wrap gap-1.5">
               {colors.map((color) => (
                 <button
                   key={color.value}
                   className={`w-6 h-6 rounded border-2 transition-all ${
                     selectedLayer.color === color.value
-                      ? 'border-gray-400 scale-110 shadow-md'
-                      : 'border-gray-300 hover:border-gray-400'
+                      ? 'border-[#6b7280] scale-110 shadow-[0_2px_4px_rgba(0,0,0,0.1)]'
+                      : 'border-[#d1d5db] hover:border-[#9ca3af]'
                   }`}
                   style={{ backgroundColor: color.value }}
                   onClick={() => onLayerUpdate(selectedLayer.id, { color: color.value })}
@@ -99,7 +99,7 @@ export const TextEditPanel: React.FC<TextEditPanelProps> = ({
           {/* 字体和字重 - 两列布局 */}
           <div className="grid grid-cols-2 gap-3">
             <div className="space-y-2">
-              <Label className="text-xs font-medium text-gray-700">字体</Label>
+              <Label className="text-xs font-medium text-[#374151]">字体</Label>
               <Select
                 value={selectedLayer.fontFamily}
                 onValueChange={(value) => onLayerUpdate(selectedLayer.id, { fontFamily: value })}
@@ -118,7 +118,7 @@ export const TextEditPanel: React.FC<TextEditPanelProps> = ({
             </div>
 
             <div className="space-y-2">
-              <Label className="text-xs font-medium text-gray-700">字重</Label>
+              <Label className="text-xs font-medium text-[#374151]">字重</Label>
               <Select
                 value={selectedLayer.fontWeight}
                 onValueChange={(value) => onLayerUpdate(selectedLayer.id, { fontWeight: value })}
@@ -140,7 +140,7 @@ export const TextEditPanel: React.FC<TextEditPanelProps> = ({
           {/* 位置调整 - 两列布局 */}
           <div className="grid grid-cols-2 gap-3">
             <div className="space-y-2">
-              <Label className="text-xs font-medium text-gray-700">X轴</Label>
+              <Label className="text-xs font-medium text-[#374151]">X轴</Label>
               <Input
                 type="number"
                 value={selectedLayer.x}
@@ -154,7 +154,7 @@ export const TextEditPanel: React.FC<TextEditPanelProps> = ({
               />
             </div>
             <div className="space-y-2">
-              <Label className="text-xs font-medium text-gray-700">Y轴</Label>
+              <Label className="text-xs font-medium text-[#374151]">Y轴</Label>
               <Input
                 type="number"
                 value={selectedLayer.y}
@@ -171,22 +171,22 @@ export const TextEditPanel: React.FC<TextEditPanelProps> = ({
 
           {/* 快速定位 - 全宽 */}
           <div className="space-y-2">
-            <Label className="text-xs font-medium text-gray-700">快速定位</Label>
+            <Label className="text-xs font-medium text-[#374151]">快速定位</Label>
             <div className="grid grid-cols-3 gap-2">
               <button
-                className="h-8 px-3 text-xs bg-gray-100 hover:bg-gray-200 rounded border transition-colors"
+                className="h-8 px-3 text-xs bg-[#f3f4f6] hover:bg-[#e5e7eb] text-[#111827] rounded border border-[#e5e7eb] hover:border-[#9ca3af] transition-colors"
                 onClick={() => onLayerUpdate(selectedLayer.id, { x: 140, y: 120 })}
               >
                 上
               </button>
               <button
-                className="h-8 px-3 text-xs bg-gray-100 hover:bg-gray-200 rounded border transition-colors"
+                className="h-8 px-3 text-xs bg-[#f3f4f6] hover:bg-[#e5e7eb] text-[#111827] rounded border border-[#e5e7eb] hover:border-[#9ca3af] transition-colors"
                 onClick={() => onLayerUpdate(selectedLayer.id, { x: 140, y: 250 })}
               >
                 中
               </button>
               <button
-                className="h-8 px-3 text-xs bg-gray-100 hover:bg-gray-200 rounded border transition-colors"
+                className="h-8 px-3 text-xs bg-[#f3f4f6] hover:bg-[#e5e7eb] text-[#111827] rounded border border-[#e5e7eb] hover:border-[#9ca3af] transition-colors"
                 onClick={() => onLayerUpdate(selectedLayer.id, { x: 140, y: 380 })}
               >
                 下
@@ -196,7 +196,7 @@ export const TextEditPanel: React.FC<TextEditPanelProps> = ({
 
           {/* 字号 - 全宽 */}
           <div className="space-y-2">
-            <Label className="text-xs font-medium text-gray-700">字号: {selectedLayer.fontSize}px</Label>
+            <Label className="text-xs font-medium text-[#374151]">字号: {selectedLayer.fontSize}px</Label>
             <Slider
               value={[selectedLayer.fontSize]}
               onValueChange={([value]) => onLayerUpdate(selectedLayer.id, { fontSize: value })}

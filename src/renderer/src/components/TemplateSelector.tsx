@@ -56,7 +56,7 @@ export const TemplateSelector: React.FC<
                 <SelectItem key={template.id} value={template.id}>
                   <div className="flex items-center justify-between w-full">
                     <span>{template.name}</span>
-                    <span className="text-xs text-gray-500 ml-2">
+                    <span className="text-xs text-[#6b7280] ml-2">
                       {template.textLayers.length} 个文字
                     </span>
                   </div>
@@ -70,11 +70,11 @@ export const TemplateSelector: React.FC<
         <div>
           <div className="flex items-center gap-2 mb-3">
             <div className="flex items-center gap-2">
-              <div className="w-1 h-4 bg-black rounded-full"></div>
-              <h3 className="text-sm font-medium text-gray-800">可编辑文字</h3>
+              <div className="w-1 h-4 bg-[#111827] rounded-full"></div>
+              <h3 className="text-sm font-medium text-[#111827]">可编辑文字</h3>
             </div>
             {textLayers.length > 0 && (
-              <span className="text-xs text-gray-500">点击选择文字图层</span>
+              <span className="text-xs text-[#6b7280]">点击选择文字图层</span>
             )}
           </div>
           
@@ -85,8 +85,8 @@ export const TemplateSelector: React.FC<
                   key={layer.id}
                   className={`group flex-shrink-0 w-24 h-16 rounded-lg cursor-pointer transition-all duration-200 ${
                     selectedLayerId === layer.id
-                      ? 'bg-gray-100 shadow-md border-2 border-gray-300'
-                      : 'bg-white border-2 border-gray-100 hover:border-gray-200 hover:shadow-md'
+                      ? 'bg-[#f3f4f6] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)] border-2 border-[#6b7280]'
+                      : 'bg-[#ffffff] border-2 border-[#e5e7eb] hover:border-[#9ca3af] hover:shadow-[0_1px_2px_rgba(0,0,0,0.05)]'
                   }`}
                   onClick={() => onLayerSelect(layer.id)}
                 >
@@ -94,8 +94,8 @@ export const TemplateSelector: React.FC<
                     <div className="flex-1 flex items-start">
                       <span className={`text-xs font-medium truncate block leading-tight ${
                         selectedLayerId === layer.id 
-                          ? 'text-gray-900' 
-                          : 'text-gray-800 group-hover:text-gray-900'
+                          ? 'text-[#111827]' 
+                          : 'text-[#374151] group-hover:text-[#111827]'
                       }`}>
                         {layer.text || `文字 ${index + 1}`}
                       </span>
@@ -104,8 +104,8 @@ export const TemplateSelector: React.FC<
                     <div className="flex items-center justify-between">
                       <span className={`text-xs font-medium ${
                         selectedLayerId === layer.id 
-                          ? 'text-gray-700' 
-                          : 'text-gray-500'
+                          ? 'text-[#374151]' 
+                          : 'text-[#6b7280]'
                       }`}>
                         #{index + 1}
                       </span>
@@ -113,8 +113,8 @@ export const TemplateSelector: React.FC<
                         <div
                           className={`w-3 h-3 rounded-full border-2 ${
                             selectedLayerId === layer.id 
-                              ? 'border-gray-400' 
-                              : 'border-gray-200'
+                              ? 'border-[#6b7280]' 
+                              : 'border-[#d1d5db]'
                           }`}
                           style={{ backgroundColor: layer.color }}
                         />
@@ -125,8 +125,8 @@ export const TemplateSelector: React.FC<
               ))}
             </div>
           ) : (
-            <div className="flex items-center justify-center h-16 bg-gray-50 rounded-lg border-2 border-dashed border-gray-200">
-              <p className="text-sm text-gray-500">当前模版没有可编辑的文字</p>
+            <div className="flex items-center justify-center h-16 bg-[#f9fafb] rounded-lg border-2 border-dashed border-[#e5e7eb]">
+              <p className="text-sm text-[#6b7280]">当前模版没有可编辑的文字</p>
             </div>
           )}
         </div>

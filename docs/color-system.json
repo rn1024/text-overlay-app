@@ -1,0 +1,394 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "图片文字叠加应用程序配色系统",
+  "version": "1.0.0",
+  "description": "基于黑色/灰色主题的专业配色系统",
+  "colorSystem": {
+    "primary": {
+      "description": "主要颜色 - 黑色/深灰色系",
+      "colors": {
+        "black": {
+          "value": "#000000",
+          "description": "纯黑色，用于最重要的文字和图标",
+          "usage": ["重要文字", "活跃状态图标", "强调元素"]
+        },
+        "gray-900": {
+          "value": "#111827",
+          "description": "极深灰色，用于主要文字",
+          "usage": ["主要文字", "重要按钮", "活跃状态"]
+        },
+        "gray-800": {
+          "value": "#1f2937",
+          "description": "深灰色，用于次要元素",
+          "usage": ["次要文字", "图标", "边框"]
+        }
+      }
+    },
+    "secondary": {
+      "description": "次要颜色 - 中等灰色系",
+      "colors": {
+        "gray-700": {
+          "value": "#374151",
+          "description": "中深灰色",
+          "usage": ["辅助文字", "次要按钮"]
+        },
+        "gray-600": {
+          "value": "#4b5563",
+          "description": "中灰色",
+          "usage": ["占位符文字", "禁用状态文字"]
+        },
+        "gray-500": {
+          "value": "#6b7280",
+          "description": "标准灰色，用于像素显示等信息文字",
+          "usage": ["信息文字", "辅助说明", "选中边框"]
+        }
+      }
+    },
+    "neutral": {
+      "description": "中性颜色 - 浅灰色系",
+      "colors": {
+        "gray-400": {
+          "value": "#9ca3af",
+          "description": "浅中灰色",
+          "usage": ["分割线", "边框"]
+        },
+        "gray-300": {
+          "value": "#d1d5db",
+          "description": "浅灰色，用于禁用状态",
+          "usage": ["禁用图标", "禁用按钮", "浅色边框"]
+        },
+        "gray-200": {
+          "value": "#e5e7eb",
+          "description": "很浅的灰色，用于边框",
+          "usage": ["面板边框", "卡片边框", "分割线"]
+        },
+        "gray-100": {
+          "value": "#f3f4f6",
+          "description": "极浅灰色，用于悬停状态",
+          "usage": ["悬停背景", "次要背景"]
+        },
+        "gray-50": {
+          "value": "#f9fafb",
+          "description": "几乎白色的灰色，用于背景",
+          "usage": ["左侧面板背景", "卡片背景"]
+        }
+      }
+    },
+    "background": {
+      "description": "背景颜色系统",
+      "colors": {
+        "primary": {
+          "value": "#ffffff",
+          "description": "主要背景色 - 纯白色",
+          "usage": ["主内容区背景", "卡片背景", "弹窗背景"]
+        },
+        "secondary": {
+          "value": "#f9fafb",
+          "description": "次要背景色 - 浅灰色",
+          "usage": ["左侧面板背景", "工具栏背景"]
+        },
+        "tertiary": {
+          "value": "#f3f4f6",
+          "description": "第三级背景色",
+          "usage": ["画布容器背景", "输入框背景"]
+        },
+        "overlay": {
+          "value": "rgba(0, 0, 0, 0.5)",
+          "description": "遮罩背景色",
+          "usage": ["弹窗遮罩", "下拉菜单遮罩"]
+        },
+        "page": {
+          "value": "#f3f4f6",
+          "description": "页面整体背景色",
+          "usage": ["应用程序外部背景"]
+        }
+      }
+    },
+    "text": {
+      "description": "文字颜色系统",
+      "colors": {
+        "primary": {
+          "value": "#111827",
+          "description": "主要文字颜色",
+          "usage": ["标题", "重要文字", "活跃状态文字"]
+        },
+        "secondary": {
+          "value": "#374151",
+          "description": "次要文字颜色",
+          "usage": ["正文", "描述文字"]
+        },
+        "tertiary": {
+          "value": "#6b7280",
+          "description": "第三级文字颜色",
+          "usage": ["辅助信息", "像素显示", "时间戳"]
+        },
+        "placeholder": {
+          "value": "#9ca3af",
+          "description": "占位符文字颜色",
+          "usage": ["输入框占位符", "空状态提示"]
+        },
+        "disabled": {
+          "value": "#d1d5db",
+          "description": "禁用状态文字颜色",
+          "usage": ["禁用按钮文字", "不可用操作文字"]
+        },
+        "inverse": {
+          "value": "#ffffff",
+          "description": "反色文字（白色）",
+          "usage": ["深色背景上的文字", "工具提示文字"]
+        }
+      }
+    },
+    "border": {
+      "description": "边框颜色系统",
+      "colors": {
+        "primary": {
+          "value": "#e5e7eb",
+          "description": "主要边框颜色",
+          "usage": ["面板分割线", "卡片边框"]
+        },
+        "secondary": {
+          "value": "#d1d5db",
+          "description": "次要边框颜色",
+          "usage": ["输入框边框", "按钮边框"]
+        },
+        "focus": {
+          "value": "#6b7280",
+          "description": "焦点状态边框颜色",
+          "usage": ["选中状态边框", "文字图层选择框"]
+        },
+        "hover": {
+          "value": "#9ca3af",
+          "description": "悬停状态边框颜色",
+          "usage": ["悬停时的边框"]
+        }
+      }
+    },
+    "shadow": {
+      "description": "阴影颜色系统",
+      "colors": {
+        "light": {
+          "value": "rgba(0, 0, 0, 0.05)",
+          "description": "轻微阴影",
+          "usage": ["卡片轻微阴影", "按钮阴影"]
+        },
+        "medium": {
+          "value": "rgba(0, 0, 0, 0.1)",
+          "description": "中等阴影",
+          "usage": ["面板阴影", "下拉菜单阴影"]
+        },
+        "heavy": {
+          "value": "rgba(0, 0, 0, 0.25)",
+          "description": "重阴影",
+          "usage": ["弹窗阴影", "主要容器阴影"]
+        }
+      }
+    },
+    "state": {
+      "description": "状态颜色系统",
+      "colors": {
+        "hover": {
+          "background": "#f3f4f6",
+          "text": "#111827",
+          "border": "#9ca3af",
+          "description": "悬停状态颜色",
+          "usage": ["按钮悬停", "选项悬停"]
+        },
+        "active": {
+          "background": "#e5e7eb",
+          "text": "#000000",
+          "border": "#6b7280",
+          "description": "激活状态颜色",
+          "usage": ["选中选项", "激活按钮"]
+        },
+        "focus": {
+          "background": "#ffffff",
+          "text": "#111827",
+          "border": "#6b7280",
+          "outline": "rgba(107, 114, 128, 0.5)",
+          "description": "焦点状态颜色",
+          "usage": ["输入框焦点", "按钮焦点"]
+        },
+        "disabled": {
+          "background": "#f9fafb",
+          "text": "#d1d5db",
+          "border": "#e5e7eb",
+          "description": "禁用状态颜色",
+          "usage": ["禁用按钮", "不可用操作"]
+        },
+        "selected": {
+          "background": "#f3f4f6",
+          "text": "#111827",
+          "border": "#6b7280",
+          "description": "选中状态颜色",
+          "usage": ["选中的文字图层", "选中的模版"]
+        }
+      }
+    },
+    "semantic": {
+      "description": "语义化颜色系统",
+      "colors": {
+        "success": {
+          "primary": "#10b981",
+          "light": "#d1fae5",
+          "dark": "#047857",
+          "description": "成功状态颜色",
+          "usage": ["成功提示", "完成状态"]
+        },
+        "error": {
+          "primary": "#ef4444",
+          "light": "#fee2e2",
+          "dark": "#dc2626",
+          "description": "错误状态颜色",
+          "usage": ["错误提示", "删除操作"]
+        },
+        "warning": {
+          "primary": "#f59e0b",
+          "light": "#fef3c7",
+          "dark": "#d97706",
+          "description": "警告状态颜色",
+          "usage": ["警告提示", "注意事项"]
+        },
+        "info": {
+          "primary": "#3b82f6",
+          "light": "#dbeafe",
+          "dark": "#1d4ed8",
+          "description": "信息状态颜色",
+          "usage": ["信息提示", "帮助说明"]
+        }
+      }
+    },
+    "canvas": {
+      "description": "画布相关颜色",
+      "colors": {
+        "background": {
+          "value": "#ffffff",
+          "description": "画布背景色",
+          "usage": ["画布容器背景"]
+        },
+        "border": {
+          "value": "#e5e7eb",
+          "description": "画布边框色",
+          "usage": ["画布容器边框"]
+        },
+        "selection": {
+          "stroke": "#6b7280",
+          "fill": "transparent",
+          "dashArray": "4,4",
+          "lineWidth": 2,
+          "description": "选中状态样式",
+          "usage": ["文字图层选择框"]
+        },
+        "textStroke": {
+          "value": "rgba(0, 0, 0, 0.4)",
+          "lineWidth": 2,
+          "description": "文字描边颜色",
+          "usage": ["文字描边增强可读性"]
+        }
+      }
+    },
+    "component": {
+      "description": "组件特定颜色",
+      "colors": {
+        "button": {
+          "primary": {
+            "background": "#111827",
+            "text": "#ffffff",
+            "border": "#111827",
+            "hover": {
+              "background": "#374151",
+              "text": "#ffffff",
+              "border": "#374151"
+            }
+          },
+          "secondary": {
+            "background": "#ffffff",
+            "text": "#374151",
+            "border": "#d1d5db",
+            "hover": {
+              "background": "#f9fafb",
+              "text": "#111827",
+              "border": "#9ca3af"
+            }
+          }
+        },
+        "input": {
+          "background": "#ffffff",
+          "text": "#111827",
+          "border": "#d1d5db",
+          "placeholder": "#9ca3af",
+          "focus": {
+            "border": "#6b7280",
+            "outline": "rgba(107, 114, 128, 0.5)"
+          }
+        },
+        "dropdown": {
+          "background": "#ffffff",
+          "text": "#111827",
+          "border": "#d1d5db",
+          "shadow": "rgba(0, 0, 0, 0.1)",
+          "option": {
+            "hover": {
+              "background": "#f3f4f6",
+              "text": "#111827"
+            },
+            "selected": {
+              "background": "#e5e7eb",
+              "text": "#111827"
+            }
+          }
+        },
+        "slider": {
+          "track": "#e5e7eb",
+          "thumb": "#6b7280",
+          "fill": "#9ca3af"
+        }
+      }
+    }
+  },
+  "usage": {
+    "guidelines": [
+      "使用primary颜色作为主要的文字和图标颜色",
+      "background.primary作为主要内容区背景",
+      "background.secondary作为次要区域背景",
+      "state颜色用于交互状态的视觉反馈",
+      "semantic颜色仅用于特定的语义场景",
+      "保持颜色使用的一致性，避免混合使用不同层级的颜色"
+    ],
+    "accessibility": [
+      "确保文字与背景的对比度符合WCAG AA标准（至少4.5:1）",
+      "为色盲用户提供足够的视觉差异",
+      "使用多种视觉提示而不仅仅依赖颜色",
+      "禁用状态的颜色应明显区别于正常状态"
+    ]
+  },
+  "tokens": {
+    "css": {
+      "description": "CSS自定义属性格式",
+      "variables": {
+        "--color-text-primary": "#111827",
+        "--color-text-secondary": "#374151",
+        "--color-text-tertiary": "#6b7280",
+        "--color-bg-primary": "#ffffff",
+        "--color-bg-secondary": "#f9fafb",
+        "--color-border-primary": "#e5e7eb",
+        "--color-gray-300": "#d1d5db",
+        "--color-gray-500": "#6b7280",
+        "--color-gray-900": "#111827"
+      }
+    },
+    "tailwind": {
+      "description": "Tailwind CSS类名映射",
+      "mapping": {
+        "text-primary": "text-gray-900",
+        "text-secondary": "text-gray-700",
+        "text-tertiary": "text-gray-500",
+        "bg-primary": "bg-white",
+        "bg-secondary": "bg-gray-50",
+        "border-primary": "border-gray-200",
+        "hover-bg": "hover:bg-gray-100",
+        "disabled-text": "text-gray-300"
+      }
+    }
+  }
+}

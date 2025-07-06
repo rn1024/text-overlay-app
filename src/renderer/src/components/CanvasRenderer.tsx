@@ -148,8 +148,8 @@ export const CanvasRenderer: React.FC<CanvasRendererProps> = ({
   }, [backgroundImageElement, textLayers, imageLoaded, onCanvasReady, selectedLayerId]);
 
   return (
-    <div className="w-full h-full flex items-center justify-center bg-gray-50 p-4">
-      <div className="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
+    <div className="w-full h-full flex items-center justify-center bg-[#f3f4f6] p-2">
+      <div className="bg-[#ffffff] rounded-lg shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)] border border-[#e5e7eb] overflow-hidden">
         <canvas
           ref={canvasRef}
           width={width}
